@@ -5,7 +5,9 @@ source scripts/build-env
 # Build image with Node versions specified above
 for version in "${NODE_VERSIONS[@]}"
 do
+	echo
 	echo "===== Building Node ${version} ====="
+	echo
 	docker build --build-arg NODE_VERSION=$version \
 		-t $DOCKER_IMAGE_NAME .
 	docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:node_$version

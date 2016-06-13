@@ -1,0 +1,11 @@
+#!/bin/bash
+source scripts/build-env
+
+if [ ! -z "$TRAVIS_TAG" ]; then
+	docker push $DOCKER_IMAGE_NAME
+	for version in "${NODE_VERSIONS[@]}"
+	do
+		docker push $DOCKER_IMAGE_NAME:node_$version
+		docker push $DOCKER_IMAGE_NAME:$TRAVIS_TAG-node_$version
+	done
+fi

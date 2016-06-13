@@ -1,0 +1,14 @@
+#!/bin/bash
+cd "$( dirname "${BASH_SOURCE[0]}" )/.."
+source scripts/build-env
+
+# Build image with Node versions specified above
+for version in "${NODE_VERSIONS[@]}"
+do
+	docker build --build-arg NODE_VERSION=$version \
+		-t $DOCKER_IMAGE_NAME .
+	docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:node_$version
+	if [ ! -z "$TRAVIS_TAG" ]; then
+		docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG-node_$version
+	fi
+done

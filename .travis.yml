@@ -3,8 +3,7 @@ services:
   - docker
 
 env:
-  - DOCKER_IMAGE_NAME=particle/buildpack-base-node
-  - DOCKER_IMAGE_NAME=particle/buildpack-hal DOCKER_VERSION=1.11.2-0~trusty
+  - DOCKER_IMAGE_NAME=particle/buildpack-base-node DOCKER_VERSION=1.11.2-0~trusty
 
 before_install:
   - apt-cache madison docker-engine

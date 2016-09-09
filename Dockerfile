@@ -5,9 +5,9 @@ ENV NODE_VERSION=${NODE_VERSION} NVM_DIR="/root/.nvm"
 RUN apt-get update -q && apt-get install -qy build-essential libssl-dev man-db \
   && curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh \
   && . $NVM_DIR/nvm.sh && nvm install ${NODE_VERSION} \
-  && nvm alias default ${NODE_VERSION} && nvm use default \
-  && echo ". $NVM_DIR/nvm.sh && nvm use default" >> /etc/profile \
+  && ln -s /root/.nvm/current/bin/node /usr/local/bin \
+  && ln -s /root/.nvm/current/bin/npm /usr/local/bin \
   && apt-get remove build-essential -qy && apt-get clean && apt-get purge \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY bin /bin
+CMD [ "node" ]

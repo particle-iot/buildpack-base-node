@@ -9,5 +9,3 @@ RUN apt-get update -q && apt-get install -qy build-essential libssl-dev man-db \
   && ln -s /root/.nvm/current/bin/npm /usr/local/bin \
   && apt-get remove build-essential -qy && apt-get clean && apt-get purge \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-CMD [ "node" ]

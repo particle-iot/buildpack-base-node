@@ -1,2 +1,2 @@
 DOCKER_IMAGE_NAME=particle/buildpack-base-node
-NODE_VERSIONS=( "v0.10.44" "v4.4.5" "v6.2.1" )
+NODE_VERSIONS=( "v0.10.44" "v4.4.5" "v6.9.1" )

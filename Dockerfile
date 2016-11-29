@@ -1,4 +1,4 @@
-FROM particle/buildpack-base:0.3.6
+FROM particle/buildpack-base:0.3.7
 
 ARG NODE_VERSION
 ENV NODE_VERSION=${NODE_VERSION} NVM_DIR="/root/.nvm"
